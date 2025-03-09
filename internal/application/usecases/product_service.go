@@ -1,7 +1,6 @@
 package usecases
 
 import (
-	"errors"
 	"github.com/EMauricioVargas/arquitectura-hexagonal-go/internal/domain/entities"
 	"github.com/EMauricioVargas/arquitectura-hexagonal-go/internal/domain/repositories"
 )
@@ -22,14 +21,14 @@ func NewProductService(repo repositories.ProductRepository) ProductService {
 func (s *productService) GetProductByID(id string) (*entities.Product, error) {
 	product, err := s.repository.FindByID(id)
 	if err != nil {
-		return nil, errors.New("product not found")
+		return nil, err
 	}
 	return product, nil
 }
 func (s *productService) GetProducts() ([]entities.Product, error) {
 	products, err := s.repository.FindAll()
 	if err != nil {
-		return nil, errors.New("products not found")
+		return nil, err
 	}
 	return products, nil
 }

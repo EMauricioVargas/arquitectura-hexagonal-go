@@ -28,7 +28,7 @@ func LoadConfig() {
 	}
 
 	// Auto migración de modelos
-	err = DB.AutoMigrate(&entities.Product{}, &entities.User{})
+	err = DB.AutoMigrate(&entities.Product{}, &entities.User{}, &entities.Bill{}, &entities.BillDetail{})
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
